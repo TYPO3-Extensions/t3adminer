@@ -74,9 +74,10 @@ function adminer_object() {
 			echo '<p id="tables">' . "\n";
 			foreach ($tables as $table => $type) {
 				echo '<span class="tables-line';
-				echo ($_GET['select'] == $table || $_GET['table'] == $table) ? ' current' : '';
+				if ($_GET["select"] == $table or $_GET["table"] == $table) {
+					echo '-active';
+				}
 				echo '">';
-				echo var_export($_GET['select'] == $table || $_GET['table'] == $table, TRUE);
 				echo '<a href="' . h(ME) . 'select=' . urlencode($table) . '"' . bold($_GET["select"] == $table) . ">" .
 					lang('select') . "</a> ";
 				echo '<a href="' . h(ME) . 'table=' . urlencode($table) . '"' . bold($_GET["table"] == $table) . ">" .
@@ -85,6 +86,18 @@ function adminer_object() {
 									 )) . "</a></span>\n"; //! Adminer::tableName may work with full table status
 			}
 			echo '</p>';
+		}
+
+		/** Print homepage
+		 * @return bool whether to print default homepage
+		 */
+		function homepage() {
+			echo '<p class="tabs">' . ($_GET["ns"] == "" ? '<a href="' . h(ME) . 'database=">' . lang('Alter database') . "</a>\n" : "");
+			if (support("scheme")) {
+				echo"<a href='" . h(ME) . "scheme='>" . ($_GET["ns"] != "" ? lang('Alter schema') : lang('Create schema')) .
+					"</a>\n";
+			}
+			return true;
 		}
 
 

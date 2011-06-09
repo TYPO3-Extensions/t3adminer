@@ -88,6 +88,39 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 			$this->MCONF = $GLOBALS['MCONF'];
 				// Get config
 			$extensionConfiguration = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['t3adminer']);
+
+				// IP-based Access restrictions
+			$devIPmask = trim($TYPO3_CONF_VARS['SYS']['devIPmask']);
+			$remoteAddress = t3lib_div::getIndpEnv('REMOTE_ADDR');
+
+				// Check for devIpMask restriction
+			$useDevIpMask = (boolean)$extensionConfiguration['applyDevIpMask'];
+			if ($useDevIpMask === TRUE) {
+					// Only use devIPmask if it is specific (not '*')
+				if ($devIPmask != '*') {
+					if (!t3lib_div::cmpIP($remoteAddress, $devIPmask)) {
+						$this->doc = t3lib_div::makeInstance('mediumDoc');
+						$this->doc->backPath = $BACK_PATH;
+						$this->content = $this->doc->startPage($LANG->getLL('title'));
+						$this->content .= sprintf($LANG->getLL('mlang_notindevipmask'), $remoteAddress);
+//						$this->content .= $this->doc->endPage();
+						return;
+					}
+				}
+			}
+
+				// Check for specified IP restrictions
+			$allowedIps = trim($extensionConfiguration['IPaccess']);
+			if (!empty($allowedIps)) {
+				if (!t3lib_div::cmpIP($remoteAddress, $allowedIps)) {
+					$this->doc = t3lib_div::makeInstance('mediumDoc');
+					$this->doc->backPath = $BACK_PATH;
+					$this->content = $this->doc->startPage($LANG->getLL('title'));
+					$this->content .= sprintf($LANG->getLL('mlang_notinipaccess'), $remoteAddress);
+//					$this->content .= $this->doc->endPage();
+					return;
+				}
+			}
 				// Path to install dir
 			$this->MCONF['ADM_absolute_path'] = $extPath . $this->MCONF['ADM_subdir'];
 				// Path to web dir
@@ -206,7 +239,7 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 						'<hr /><strong>ERROR: The directory, ' . $this->MCONF['ADM_subdir'] . ', was NOT found!</strong><HR>'
 						: '') . '
 								');
-				$this->content .= $this->doc->endPage();
+//				$this->content .= $this->doc->endPage();
 			}
 
 		}
@@ -222,35 +255,6 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 		$this->content.=$this->doc->endPage();
 		echo $this->content;
 	}
-
-	/**
-	 * Generates the module content
-	 *
-	 * @return	void
-	 */
-	function moduleContent()	{
-		switch((string)$this->MOD_SETTINGS['function'])	{
-			case 1:
-				$content='<div align="center"><strong>Hello World!</strong></div><br />
-					The "Kickstarter" has made this module automatically, it contains a default framework for a backend module but apart from that it does nothing useful until you open the script '.substr(t3lib_extMgm::extPath('t3adminer'),strlen(PATH_site)).'mod1/index.php and edit it!
-					<hr />
-					<br />This is the GET/POST vars sent to the script:<br />'.
-					'GET:'.t3lib_div::view_array($_GET).'<br />'.
-					'POST:'.t3lib_div::view_array($_POST).'<br />'.
-					'';
-				$this->content.=$this->doc->section('Message #1:',$content,0,1);
-			break;
-			case 2:
-				$content='<div align=center><strong>Menu item #2...</strong></div>';
-				$this->content.=$this->doc->section('Message #2:',$content,0,1);
-			break;
-			case 3:
-				$content='<div align=center><strong>Menu item #3...</strong></div>';
-				$this->content.=$this->doc->section('Message #3:',$content,0,1);
-			break;
-		}
-	}
-				
 }
 
 
@@ -263,11 +267,14 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/t3admin
 
 
 // Make instance:
+/** @var $SOBE tx_t3adminer_module1 */
 $SOBE = t3lib_div::makeInstance('tx_t3adminer_module1');
 $SOBE->init();
 
 // Include files?
-foreach($SOBE->include_once as $INC_FILE)	include_once($INC_FILE);
+foreach($SOBE->include_once as $INC_FILE) {
+	include_once($INC_FILE);
+}
 
 $SOBE->main();
 $SOBE->printContent();

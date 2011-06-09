@@ -34,7 +34,7 @@ td, th {
 	border: medium none;
 	background: none;
 }
-tr:hover td, tr:hover th {
+tbody tr:hover td, tbody tr:hover th {
 	background-color: #DEDEDE;
 }
 a {
@@ -155,10 +155,10 @@ p#tables {
 	top: 97px;
 	bottom: 0;
 	left: 0;
-	padding: 0;
+	padding: 0 0 0 5px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: 270px;
+	width: 265px;
 	line-height: 18px;
 	background-color: #EBEBEB;
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/AMjIyEzIyMizyMjI/zhvCQelaHPPAAAAAElFTkSuQmCC");
@@ -171,7 +171,8 @@ p#tables a {
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
-	margin-top: 5px;
+	margin-top: 1px;
+	top: 0px;
 }
 
 p#tables a[href*="select="] {
@@ -191,6 +192,7 @@ p#tables a[href*="select="]:before {
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
+	line-height: 18px;
 }
 
 p#tables a[href*="table="] {
@@ -200,9 +202,27 @@ p#tables a[href*="table="] {
 }
 p#tables span.tables-line {
 	display: list-item;
+	border: 1px solid transparent;
+	position: relative
 }
-p#tables span.current {
-	background-color: red;
+p#tables span.tables-line-active {
+	display: list-item;
+	background-color: #F8F8F8;
+	border-bottom: 1px solid #D7D7D7;
+	border-left: 1px solid #D7D7D7;
+	border-top: 1px solid #D7D7D7;
+	position: relative;
+}
+p#tables span.tables-line:hover {
+	border-bottom: 1px solid #D7D7D7;
+	border-left: 1px solid #D7D7D7;
+	border-top: 1px solid #D7D7D7;
+	background-color: #F2F2F2;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/AMjIyEzIyMizyMjI/zhvCQelaHPPAAAAAElFTkSuQmCC");
+	background-position: right center;
+	background-repeat: repeat-y;
+	border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px;
 }
 #lang {
 	top: 1px;
@@ -230,7 +250,7 @@ p#tables span.current {
 #content table tr:nth-child(2n) td, #content table tr:nth-child(2n) th {
 	background-color: #F7F7F7;
 }
-#content table tr:hover td, #content table tr:hover th {
+#content table tbody tr:hover td, #content table tbody tr:hover th {
 	background-color: #DEDEDE;
 }
 #content h2 {
@@ -329,4 +349,36 @@ input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hove
 #loader {
 	top: 2em;
 	left: 59em;
+}
+p.tabs {
+	border-bottom: 1px solid #ADADAD;
+	padding: 3px 0 3px 10px;
+}
+p.tabs a {
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0 0 #DADADA;
+	border-color: #ADADAD #ADADAD -moz-use-text-color;
+	border-style: solid solid none;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-width: 1px 1px medium;
+	color: #606060;
+	padding: 4px 10px;
+	margin: 0 -1px 0 -2px;
+	border-bottom: 1px solid #C0C0C0;
+}
+p.tabs a:hover {
+	background-color: #EEEEEE;
+	border-color: #ADADAD;
+	color: #606060;
+	text-decoration: none;
+}
+p.tabs a.active {
+	background: none repeat scroll 0 0 #FFFFFF;
+	color: #000000;
+	border-bottom: 1px solid #FFFFFF;
 }
