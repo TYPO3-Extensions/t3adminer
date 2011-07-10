@@ -215,7 +215,7 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 					$LANG_KEY = 'en';
 				}
 					// Redirect to phpMyAdmin (should use absolute URL here!), setting default database
-				$redirect_uri = $_SESSION['ADM_SignonURL'] . '?lang=' . $LANG_KEY . '&db=' . rawurlencode(TYPO3_db) . '&server=' . rawurlencode(TYPO3_db_host) . '&username=' . rawurlencode(TYPO3_db_username);
+				$redirect_uri = $_SESSION['ADM_SignonURL'] . '?lang=' . $LANG_KEY . '&db=' . rawurlencode(TYPO3_db) . '&' . rawurlencode($_SESSION['ADM_driver']) . '=' . rawurlencode(TYPO3_db_host) . '&username=' . rawurlencode(TYPO3_db_username);
 				if ($_SESSION['ADM_driver'] !== 'server') {
 					$redirect_uri .= '&driver=' . rawurlencode($_SESSION['ADM_driver']);
 				}

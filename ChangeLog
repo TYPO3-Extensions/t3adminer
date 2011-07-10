@@ -1,3 +1,8 @@
+2011-07-07 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Fixed #27624 Design problem with Opera 11
+	* Fixed #27626 adminer.css - adding linear-gradient
+
 2011-06-09 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* version 0.0.2

@@ -17,8 +17,12 @@ table.nowrap {
 }
 thead td, thead th, thead tr:hover td, thead tr:hover th {
 	background-color: #585858;
-	background-image: -moz-linear-gradient(center top, #7F7F7F 10%, #5B5B5B 100%);
-	background-repeat: repeat-x;
+    background-image: linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
+    background-image: -o-linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
+    background-image: -ms-linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
+    background-image: -moz-linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #7f7f7f), color-stop(1, #5b5b5b));
+    background-repeat: repeat-x;
 	color: #FFFFFF;
 	font-size: 10px;
 	height: 20px;
@@ -203,7 +207,9 @@ p#tables a[href*="table="] {
 p#tables span.tables-line {
 	display: list-item;
 	border: 1px solid transparent;
-	position: relative
+	position: relative;
+    height: 18px;
+    list-style: none;
 }
 p#tables span.tables-line-active {
 	display: list-item;
@@ -304,9 +310,11 @@ input[type="submit"], input[type="button"], input[type="reset"] {
 	background-color: #F6F6F6;
 	background-image: url('/typo3/sysext/t3skin/images/backgrounds/button.png');
 	background-image: linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-	background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #d5d5d5));
-	background-position: center bottom;
+    background-image: -o-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
+    background-image: -ms-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
+    background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #d5d5d5));
+    background-position: center bottom;
 	background-repeat: repeat-x;
 	border-radius: 1px;
 	-moz-border-radius: 1px;
@@ -315,7 +323,9 @@ input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hove
 	background-color: #c8c8c8;
 	background-image: url('/typo3/sysext/t3skin/images/backgrounds/button-hover.png');
 	background-image: linear-gradient(center top, #f6f6f6 10%, #c8c8c8 90%);
-	background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #bdbcbc 90%);
+    background-image: -o-linear-gradient(center top, #f6f6f6 10%, #c8c8c8 100%);
+    background-image: -ms-linear-gradient(center top, #f6f6f6 10%, #bdbcbc 90%);
+    background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #bdbcbc 90%);
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #c8c8c8));
 	background-position: bottom;
 	background-repeat: repeat-x;
