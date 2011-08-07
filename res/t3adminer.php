@@ -39,7 +39,7 @@ function adminer_object() {
 
 	$plugins = array(
 			// specify enabled plugins here
-		new AdminerFrames
+		new AdminerFrames,
 	);
 
 	class AdminerSoftware extends AdminerPlugin {
@@ -66,8 +66,12 @@ function adminer_object() {
 			return $_SESSION['ADM_db'];
 		}
 
+		function loginForm() {
+			//	disable login form
+		}
+
 		/** Prints table list in menu
-		 * @param array
+		 * @param array $tables
 		 * @return null
 		 */
 		function tablesPrint($tables) {
@@ -100,7 +104,6 @@ function adminer_object() {
 			return true;
 		}
 
-
 	}
 
 	return new AdminerSoftware($plugins);
@@ -110,5 +113,5 @@ $session_name = 'tx_t3adminer';
 session_name($session_name);
 session_start();
 
-include "./adminer-3.2.2.php";
+include "./adminer.txt";
 ?>

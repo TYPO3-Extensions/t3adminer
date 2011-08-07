@@ -1,3 +1,15 @@
+2011-08-07 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Security Fix! version 0.03
+	* Fixed #28780 sometimes the uid column is missing (CSS issue)
+	* Fixed #28348 Update to Adminer 3.3.0 (3.3.1 now included)
+
+2011-07-29 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Updated Adminer to 3.3.1 which fixes a XSS issue (thanks to Georg Ringer)
+	* Fixed problem that adminer script could be called outside the extension (still needed login to database)
+	* Fixed session problem (after logging out the session data of t3adminer was still present)
+
 2011-07-07 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Fixed #27624 Design problem with Opera 11
