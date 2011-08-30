@@ -1,3 +1,10 @@
+2011-08-29 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Updated Adminer to 3.3.3
+	* Added TYPO3 styling to add/up/down/delete buttons in create/alter table
+	* Tested extension with TYPO3 4.6 and updated dependency
+	* Set state to beta
+
 2011-08-07 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Security Fix! version 0.03

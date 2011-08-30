@@ -22,7 +22,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'priority' => '',
 	'module' => 'mod1',
 	'doNotLoadInFE' => 1,
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
@@ -33,7 +33,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '0.0.3',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '4.5.0-0.0.0',
+			'typo3' => '4.5.0-4.6.99',
 		),
 		'conflicts' => array(
 		),

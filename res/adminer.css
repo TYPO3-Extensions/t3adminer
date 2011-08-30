@@ -38,6 +38,9 @@ td, th {
 	border: medium none;
 	background: none;
 }
+.js .checked td, .js .checked .th {
+    background-color: #DADADA;
+}
 tbody tr:hover td, tbody tr:hover th {
 	background-color: #DEDEDE;
 }
@@ -87,6 +90,30 @@ table.nowrap a[href*="edit="][href*="&where"]:before {
 }
 table.nowrap thead th a, table.nowrap thead td a {
 	color: white;
+}
+table.nowrap input[type=image][name^=add] {
+    height: 16px;
+    padding-left: 16px;
+    width: 0;
+    background: url("/typo3/sysext/t3skin/images/icons/actions/document-new.png") repeat scroll 0 0 transparent;
+}
+table.nowrap input[type=image][name^=up] {
+    height: 16px;
+    padding-left: 16px;
+    width: 0;
+    background: url("/typo3/sysext/t3skin/images/icons/actions/move-up.png") repeat scroll 0 0 transparent;
+}
+table.nowrap input[type=image][name^=down] {
+    height: 16px;
+    padding-left: 16px;
+    width: 0;
+    background: url("/typo3/sysext/t3skin/images/icons/actions/move-down.png") repeat scroll 0 0 transparent;
+}
+table.nowrap input[type=image][name^=drop_col] {
+    height: 16px;
+    padding-left: 16px;
+    width: 0;
+    background: url("/typo3/sysext/t3skin/images/icons/actions/edit-delete.png") repeat scroll 0 0 transparent;
 }
 
 p#breadcrumb {
