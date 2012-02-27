@@ -140,6 +140,7 @@ p#breadcrumb a {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/ALi4uEy4uLi0uLi4/zSECHijpwMGAAAAAElFTkSuQmCC");
 	background-repeat: repeat-y;
 	background-position: right center;
+    height: 27px;
 }
 #menu p {
 	margin: 0;
@@ -364,24 +365,28 @@ input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hove
 	padding: 0 4px 2px;
 	margin-left: 5px;
 }
-.message, .error {
+#menu p.message, #menu p.error, #content p.message, #content p.error {
 	background-position: 10px 12px;
 	background-repeat: no-repeat;
 	border: 1px solid;
 	margin-bottom: 4px;
 	padding: 12px 12px 12px 36px;
 }
-.message {
+#menu p.message, #content p.message {
 	background-color: #EAF7FF;
 	background-image: url("/typo3/sysext/t3skin/icons/gfx/information.png");
 	border-color: #C5DBE6;
 	color: #4C73A1;
 }
-.error {
+#menu p.error, #content p.error {
 	background-color: #F6D3CF;
 	background-image: url("/typo3/sysext/t3skin/icons/gfx/error.png");
 	border-color: #D66C68;
 	color: #AA0225;
+}
+#menu p.error, #menu p.message {
+    margin-left: 9px;
+    margin-right: 9px;
 }
 #loader {
 	top: 2em;

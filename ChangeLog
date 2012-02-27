@@ -1,3 +1,10 @@
+2012-02-27 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Fixed #32501 PHP Fatal error: Call to a member function endPage() on a non-object
+	* Fixed tiny CSS issue with grey bar in second column
+	* Fixed styling of messages / errors in second column
+	* Tested compatibility with TYPO3 4.7
+
 2011-08-29 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Updated Adminer to 3.3.3

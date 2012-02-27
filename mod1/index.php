@@ -252,7 +252,9 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 	 */
 	function printContent()	{
 
-		$this->content.=$this->doc->endPage();
+		if ($this->doc instanceof template) {
+			$this->content .= $this->doc->endPage();
+		}
 		echo $this->content;
 	}
 }
