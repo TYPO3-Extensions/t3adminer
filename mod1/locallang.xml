@@ -9,9 +9,6 @@
 			<label index="title">Adminer</label>
 			<label index="mlang_notindevipmask"><![CDATA[<h3>Access Denied</h3><p>This Adminer-Module was configured with IP-based access restrictions and your REMOTE_ADDR (%s) is not in TYPO3 devIPmask.</p>]]></label>
 			<label index="mlang_notinipaccess"><![CDATA[<h3>Access Denied</h3><p>This Adminer-Module was configured with IP-based access restrictions and your REMOTE_ADDR (%s) is not in the list of allowed IPs.</p>]]></label>
-			<label index="function1">Function #1</label>
-			<label index="function2">Function #2</label>
-			<label index="function3">Function #3</label>
 		</languageKey>
 	</data>
 </T3locallang>

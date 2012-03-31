@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Jigal van Hemert <jigal@xs4all.nl>
+ *  (c) 2011-2012 Jigal van Hemert <jigal@xs4all.nl>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -44,33 +44,53 @@ function adminer_object() {
 
 	class AdminerSoftware extends AdminerPlugin {
 
+		/**
+		 * Custom name in title and heading
+		 *
+		 * @return string
+		 */
 		function name() {
-			// custom name in title and heading
 			return 'T3Adminer';
 		}
 
+		/**
+		 * Key used for permanent login
+		 *
+		 * @return string
+		 */
 		function permanentLogin() {
-			// key used for permanent login
 			return "74b941992ef29727ccabf82889fe837a";
 		}
 
+		/**
+		 * server, username and password for connecting to database
+		 *
+		 * @return array
+		 */
 		function credentials() {
-			// server, username and password for connecting to database
 			return array(
 				$_SESSION['ADM_server'], $_SESSION['ADM_user'], $_SESSION['ADM_password']
 			);
 		}
 
+		/**
+		 * database name, will be escaped by Adminer
+		 *
+		 * @return mixed
+		 */
 		function database() {
-			// database name, will be escaped by Adminer
 			return $_SESSION['ADM_db'];
 		}
 
+		/**
+		 * disable login form
+		 */
 		function loginForm() {
-			//	disable login form
 		}
 
-		/** Prints table list in menu
+		/**
+		 * Prints table list in menu
+		 *
 		 * @param array $tables
 		 * @return null
 		 */
@@ -85,14 +105,15 @@ function adminer_object() {
 				echo '<a href="' . h(ME) . 'select=' . urlencode($table) . '"' . bold($_GET["select"] == $table) . ">" .
 					lang('select') . "</a> ";
 				echo '<a href="' . h(ME) . 'table=' . urlencode($table) . '"' . bold($_GET["table"] == $table) . ">" .
-					$this->tableName(array(
-										  "Name" => $table
-									 )) . "</a></span>\n"; //! Adminer::tableName may work with full table status
+					$this->tableName(array('Name' => $table)) .
+					"</a></span>\n"; //! Adminer::tableName may work with full table status
 			}
 			echo '</p>';
 		}
 
-		/** Print homepage
+		/**
+		 * Print homepage
+		 *
 		 * @return bool whether to print default homepage
 		 */
 		function homepage() {

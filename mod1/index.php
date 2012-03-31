@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2011 Jigal van Hemert <jigal@xs4all.nl>
+*  (c) 2011-2012 Jigal van Hemert <jigal@xs4all.nl>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -67,15 +67,14 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 
 	/**
 	 * Main function of the module. Write the content to $this->content
-	 * If you chose "web" as main module, you will need to consider the $this->id parameter which will contain the uid-number of the page clicked in the page tree
 	 *
-	 * @return	[type]		...
+	 * @return void
 	 */
 	function main() {
 		global $BE_USER, $LANG, $BACK_PATH, $TCA_DESCR, $TCA, $CLIENT, $TYPO3_CONF_VARS;
 
-		// Access check!
-		// The page will show only if there is a valid page and if this page may be viewed by the user
+			// Access check!
+			// The page will show only if there is a valid page and if this page may be viewed by the user
 		$this->pageinfo = t3lib_BEfunc::readPageAccess($this->id, $this->perms_clause);
 		$access = is_array($this->pageinfo) ? 1 : 0;
 
@@ -103,7 +102,6 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 						$this->doc->backPath = $BACK_PATH;
 						$this->content = $this->doc->startPage($LANG->getLL('title'));
 						$this->content .= sprintf($LANG->getLL('mlang_notindevipmask'), $remoteAddress);
-//						$this->content .= $this->doc->endPage();
 						return;
 					}
 				}
@@ -117,7 +115,6 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 					$this->doc->backPath = $BACK_PATH;
 					$this->content = $this->doc->startPage($LANG->getLL('title'));
 					$this->content .= sprintf($LANG->getLL('mlang_notinipaccess'), $remoteAddress);
-//					$this->content .= $this->doc->endPage();
 					return;
 				}
 			}
@@ -133,12 +130,12 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 				$session_name = 'tx_t3adminer';
 				session_name($session_name);
 				session_start();
-				// Detect DBMS
+					// Detect DBMS
 				$_SESSION['ADM_driver'] = 'server';
 				if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dbal']['handlerCfg']['_DEFAULT'])) {
-					//DBAL is configured
+						//DBAL is configured
 					if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dbal']['handlerCfg']['_DEFAULT']['type'] === 'adodb') {
-						//ADOdb is in use, let's find the DBMS type, if type is set to 'native' it's still MySQL
+							//ADOdb is in use, let's find the DBMS type, if type is set to 'native' it's still MySQL
 						switch ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dbal']['handlerCfg']['_DEFAULT']['config']['driver']) {
 							case 'mssql':
 								$_SESSION['ADM_driver'] = 'mssql';
@@ -156,7 +153,7 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 						}
 					}
 				}
-				// Store there credentials in the session
+					// Store there credentials in the session
 				$_SESSION['ADM_user'] = TYPO3_db_username;
 				$_SESSION['pwds'][$_SESSION['ADM_driver']][TYPO3_db_host][TYPO3_db_username] = TYPO3_db_password;
 				$_SESSION['ADM_password'] = TYPO3_db_password;
@@ -187,28 +184,39 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 				setcookie($session_name, $id, 0, '/', '');
 					// Close that session
 				session_write_close();
-					// Mapping language keys for phpMyAdmin
+					// Mapping language keys for Adminer (both for TYPO3 4.5 and later versions)
 				$LANG_KEY_MAP = array(
-					'en' => 'en',
-					'cz' => 'cs',
-					'sk' => 'sk',
-					'nl' => 'nl',
-					'es' => 'es',
-					'de' => 'de',
-					'fr' => 'fr',
-					'it' => 'it',
-					'et' => 'et',
-					'hu' => 'hu',
-					'pl' => 'pl',
-					'ca' => 'ca',
-					'pt' => 'pt',
-					'si' => 'sl',
-					'tr' => 'tr',
-					'ru' => 'ru',
-					'ch' => 'zh',
-					'jp' => 'ja',
-					'th' => 'ta',
-					'ar' => 'ar',
+					'ar' => 'ar',	// Arabic
+					'ca' => 'ca',	// Catalan
+					'cs' => 'cs',	// Czech
+					'cz' => 'cs',	// Czech
+					'de' => 'de',	// German
+					'en' => 'en',	// English
+					'es' => 'es',	// Spanish
+					'et' => 'et',	// Estonian
+					'fa' => 'fa',	// Persian
+					'fr' => 'fr',	// French
+					'hu' => 'hu',	// Hungarian
+					'it' => 'it',	// Italian
+					'jp' => 'ja',	// Japanese
+					'ja' => 'ja',	// Japanese
+					'lt' => 'lt',	// Lithuanian
+					'nl' => 'nl',	// Dutch
+					'pl' => 'pl',	// Polish
+					'sk' => 'sk',	// Slovak
+					'pt' => 'pt',	// Portuguese
+					'si' => 'sl',	// Slovenian
+					'sl' => 'sl',	// Slovenian
+					'tr' => 'tr',	// Turkish
+					'ro' => 'ro',	// Romanian
+					'ru' => 'ru',	// Russian
+					//'' => 'ta',	// Tamil
+					'ua' => 'uk',	// Ukrainian
+					'uk' => 'uk',	// Ukrainian
+					'hk' => 'zh',	// Chinese
+					'ch' => 'zh',	// Chinese
+					'zh' => 'zh',	// Chinese
+					//'' => 'zh-tw',	// Taiwanese
 				);
 				$LANG_KEY = $LANG_KEY_MAP[$LANG->lang];
 				if (!$LANG_KEY) {
@@ -239,7 +247,6 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 						'<hr /><strong>ERROR: The directory, ' . $this->MCONF['ADM_subdir'] . ', was NOT found!</strong><HR>'
 						: '') . '
 								');
-//				$this->content .= $this->doc->endPage();
 			}
 
 		}

@@ -1,3 +1,12 @@
+2012-03-31 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Fixed #35224 Upgrade to Adminer 3.3.4
+	* Fixed #35423 Support TYPO3 4.6+ language codes
+	* Added support for new languages of Adminer
+	* Updated manual with new screenshots
+	* Small clean-up of comments, missing PHPdoc headers, etc.
+	* version 1.0.1
+
 2012-02-27 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Fixed #32501 PHP Fatal error: Call to a member function endPage() on a non-object
