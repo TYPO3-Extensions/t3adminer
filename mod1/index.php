@@ -204,6 +204,7 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 					'nl' => 'nl',	// Dutch
 					'pl' => 'pl',	// Polish
 					'sk' => 'sk',	// Slovak
+					'sr' => 'sr',	// Serbian
 					'pt' => 'pt',	// Portuguese
 					'si' => 'sl',	// Slovenian
 					'sl' => 'sl',	// Slovenian
@@ -217,6 +218,8 @@ class  tx_t3adminer_module1 extends t3lib_SCbase {
 					'ch' => 'zh',	// Chinese
 					'zh' => 'zh',	// Chinese
 					//'' => 'zh-tw',	// Taiwanese
+					'ms' => 'id',	// Malay (Indonesian)
+					//'' => 'bn',	// Bengali
 				);
 				$LANG_KEY = $LANG_KEY_MAP[$LANG->lang];
 				if (!$LANG_KEY) {

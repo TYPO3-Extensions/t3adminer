@@ -140,7 +140,7 @@ p#breadcrumb a {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/ALi4uEy4uLi0uLi4/zSECHijpwMGAAAAAElFTkSuQmCC");
 	background-repeat: repeat-y;
 	background-position: right center;
-    height: 27px;
+    height: 22px;
 }
 #menu p {
 	margin: 0;
@@ -152,10 +152,10 @@ p#breadcrumb a {
 }
 
 #menu h1 {
-	height: 22px;
+	height: 27px;
 	padding: 0 10px;
 	margin: 0;
-	line-height: 20px;
+	line-height: 23px;
 	display: block;
 	background-color: #585858;
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/AEBAQExAQECzQEBA/xb3BD8CHBN0AAAAAElFTkSuQmCC");
@@ -204,7 +204,8 @@ p#tables a {
 	padding: 0;
 	text-decoration: none;
 	margin-top: 1px;
-	top: 0px;
+	top: 0;
+    background-color: transparent;
 }
 
 p#tables a[href*="select="] {
@@ -290,11 +291,11 @@ p#tables span.tables-line:hover {
 #content h2 {
 	display: block;
 	margin: 0;
-	height: 21px;
+	height: 16px;
 	position: fixed;
 	left: 270px;
 	right: 0;
-	top: 22px;
+	top: 27px;
 	line-height: 22px;
 	padding: 0 0 6px 10px;
 	background-color: #DADADA;
@@ -316,11 +317,12 @@ h3 {
 	left: 270px;
 	right: 0;
 	top: 0;
-	height: 22px;
+	height: 27px;
 	margin: 0;
 	border-bottom: 1px solid #999;
 	background-color: #585858;
 	color: #FFFFFF;
+    line-height: 22px;
 }
 
 input, textarea, select, button {

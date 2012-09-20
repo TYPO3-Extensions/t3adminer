@@ -1,3 +1,10 @@
+2012-09-20 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Upgrade to Adminer 3.6.1
+	* Small CSS fix for upgrade and TYPO3 6.0 compatibility
+	* Added languages Indonesian (Malay), Serbian. Bengali isn't supported by TYPO3
+	* Tested compatibility with TYPO3 6.0
+
 2012-03-31 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Fixed #35224 Upgrade to Adminer 3.3.4
