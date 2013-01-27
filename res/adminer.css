@@ -439,3 +439,54 @@ a#version {
 p.logout input {
     display: none;
 }
+.js .column {
+	background: transparent;
+	width: 12px;
+	display: inline-block;
+	position: relative;
+	height: 8px;
+}
+.js .column a:hover {
+	text-decoration: none;
+}
+.js .column a[href*="desc%5B0%5D=1"] {
+	position: absolute;
+	left: -3px;
+	width: 16px;
+	display: block;
+	overflow: hidden;
+}
+.js .column a[href*="desc%5B0%5D=1"]:before {
+	content: "\00a0";
+	background-image: url("/typo3/sysext/t3skin/images/icons/status/status-sorting-light-desc.png");
+	background-position: -16px 0;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	line-height: 18px;
+}
+
+.js .column a[onclick*="selectSearch"] {
+	position: absolute;
+	left: 10px;
+	width: 16px;
+	display: block;
+	overflow: hidden;
+}
+
+.js .column a[onclick*="selectSearch"]:before {
+	content: "\00a0";
+	background-image: url("/typo3/sysext/t3skin/images/icons/apps/toolbar-menu-search.png");
+	background-position: -16px 0;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	line-height: 18px;
+}
+.js .hidden {
+	visibility: hidden;
+}
