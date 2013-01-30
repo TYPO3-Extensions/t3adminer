@@ -1,14 +1,14 @@
 <?php
 
-########################################################################
-# Extension Manager/Repository config file for ext "t3adminer".
-#
-# Auto generated 20-09-2012 08:14
-#
-# Manual updates:
-# Only the data in the array - everything else is removed by next
-# writing. "version" and "dependencies" must not be touched!
-########################################################################
+/***************************************************************
+ * Extension Manager/Repository config file for ext "t3adminer".
+ *
+ * Auto generated 30-01-2013 01:42
+ *
+ * Manual updates:
+ * Only the data in the array - everything else is removed by next
+ * writing. "version" and "dependencies" must not be touched!
+ ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Adminer',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '1.1.0',
+	'version' => '1.2.0',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.5.0-6.0.99',
@@ -39,7 +39,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:20:{s:9:"ChangeLog";s:4:"f091";s:21:"ext_conf_template.txt";s:4:"4f78";s:12:"ext_icon.gif";s:4:"147c";s:17:"ext_localconf.php";s:4:"394d";s:14:"ext_tables.php";s:4:"5aff";s:10:"README.txt";s:4:"1380";s:36:"classes/class.tx_t3adminer_hooks.php";s:4:"6b46";s:14:"doc/manual.sxw";s:4:"1a8c";s:19:"doc/wizard_form.dat";s:4:"9829";s:20:"doc/wizard_form.html";s:4:"2c28";s:13:"mod1/conf.php";s:4:"a4f1";s:14:"mod1/index.php";s:4:"5cf8";s:18:"mod1/locallang.xml";s:4:"48e5";s:22:"mod1/locallang_mod.xml";s:4:"0ace";s:19:"mod1/moduleicon.gif";s:4:"147c";s:15:"res/adminer.css";s:4:"db1b";s:15:"res/adminer.txt";s:4:"3abf";s:17:"res/t3adminer.php";s:4:"c03b";s:29:"res/plugins/AdminerFrames.php";s:4:"c609";s:22:"res/plugins/plugin.php";s:4:"9970";}',
+	'_md5_values_when_last_written' => 'a:21:{s:9:"ChangeLog";s:4:"37fe";s:21:"ext_conf_template.txt";s:4:"4f78";s:12:"ext_icon.gif";s:4:"147c";s:17:"ext_localconf.php";s:4:"394d";s:14:"ext_tables.php";s:4:"5aff";s:10:"README.txt";s:4:"1380";s:36:"classes/class.tx_t3adminer_hooks.php";s:4:"6b46";s:14:"doc/manual.sxw";s:4:"1a8c";s:19:"doc/wizard_form.dat";s:4:"9829";s:20:"doc/wizard_form.html";s:4:"2c28";s:13:"mod1/conf.php";s:4:"a4f1";s:14:"mod1/index.php";s:4:"5cf8";s:18:"mod1/locallang.xml";s:4:"48e5";s:22:"mod1/locallang_mod.xml";s:4:"0ace";s:19:"mod1/moduleicon.gif";s:4:"147c";s:15:"res/adminer.css";s:4:"d947";s:15:"res/adminer.txt";s:4:"453f";s:19:"res/adminer_old.txt";s:4:"3abf";s:17:"res/t3adminer.php";s:4:"c03b";s:29:"res/plugins/AdminerFrames.php";s:4:"c609";s:22:"res/plugins/plugin.php";s:4:"9970";}',
 	'suggests' => array(
 	),
 );
