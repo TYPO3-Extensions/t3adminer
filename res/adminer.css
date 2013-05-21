@@ -458,7 +458,7 @@ p.logout input {
 }
 .js .column a[href*="desc%5B0%5D=1"]:before {
 	content: "\00a0";
-	background-image: url("/typo3/sysext/t3skin/images/icons/status/status-sorting-light-desc.png");
+	background-image: url("/typo3/sysext/t3skin/images/icons/actions/view-list-collapse.png");
 	background-position: -16px 0;
 	height: 16px;
 	width: 16px;
