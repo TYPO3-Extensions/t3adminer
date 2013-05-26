@@ -1,3 +1,10 @@
+2013-05-22 Jigal van Hemert  <jigal@xs4all.nl>
+
+	* Upgrade to Adminer 3.7.0
+	* Added styling for paginator in Adminer
+	* Fixed CSS icon for descending sorting and TYPO3 4.x compatibility
+	* Fixed #48395 TYPO3 6.2 compatibility
+
 2013-01-27 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Upgrade to Adminer 3.6.3

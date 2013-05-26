@@ -490,3 +490,17 @@ p.logout input {
 .js .hidden {
 	visibility: hidden;
 }
+p.pages {
+	background: none repeat scroll 0 0 transparent;
+	border: medium none;
+	height: 12px;
+	left: 50%;
+	margin: 0;
+	padding: 5px;
+	position: fixed;
+	top: 25px;
+}
+p.pages a {
+	border: 1px solid #ADADAD;
+	padding: 1px 5px;
+}
