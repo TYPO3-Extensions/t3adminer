@@ -1,3 +1,9 @@
+2014-03-26 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+    * Upgrade to Adminer 4.0.3
+    * Styling adjusted for new features
+    * Styling updated to match TYPO3 6.2
+
 2013-05-22 Jigal van Hemert  <jigal@xs4all.nl>
 
 	* Upgrade to Adminer 3.7.0

@@ -1,5 +1,5 @@
 body {
-	font-size: 11px;
+	font-size: 12px;
 	line-height: 14px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
@@ -7,26 +7,18 @@ code {
 	background-color: transparent;
 }
 table {
-	font-size: 11px;
 	background: none repeat scroll 0 0 #FFFFFF;
 	border: 1px solid #A2AAB8;
+	font-size: 100%;
 }
 table.nowrap {
 	background: none repeat scroll 0 0 #FFFFFF;
 	border: 1px solid #A2AAB8;
 }
 thead td, thead th, thead tr:hover td, thead tr:hover th {
-	background-color: #585858;
-    background-image: linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
-    background-image: -o-linear-gradient(top, #7f7f7f 10%, #5b5b5b 100%);
-    background-image: -ms-linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
-    background-image: -moz-linear-gradient(center top, #7f7f7f 10%, #5b5b5b 100%);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #7f7f7f), color-stop(1, #5b5b5b));
-    background-repeat: repeat-x;
+	background-color: #666666;
 	color: #FFFFFF;
-	font-size: 10px;
-	height: 20px;
-	line-height: 19px;
+	padding: 6px;
 }
 tr {
 	background-color: #FFFFFF;
@@ -37,10 +29,16 @@ tr.odd {
 td, th {
 	border: medium none;
 	background: none;
+	min-height: 16px;
+	padding: 6px;
 }
-.js .checked td, .js .checked .th {
+.js .checkable .checked td, .js .checkable .checked .th {
     background-color: #DADADA;
 }
+.active {
+	font-weight: normal;
+}
+
 tbody tr:hover td, tbody tr:hover th {
 	background-color: #DEDEDE;
 }
@@ -59,7 +57,7 @@ a:visited {
 	text-decoration: none;
 	cursor: pointer;
 }
-a:hover {
+a:hover, a:link:hover, a:visited:hover {
 	color: black;
 	text-decoration: underline;
 }
@@ -67,6 +65,7 @@ a:active {
 	color: black;
 	text-decoration: underline;
 }
+
 form table.nowrap a[href*="edit="][href*="&where"] {
 	position: relative;
 	left: 4px;
@@ -88,7 +87,7 @@ table.nowrap a[href*="edit="][href*="&where"]:before {
 	overflow: hidden;
 	position: relative;
 }
-table.nowrap thead th a, table.nowrap thead td a {
+table.nowrap thead th a, table.nowrap thead td a, table.nowrap thead th a:hover, table.nowrap thead td a:hover, table.nowrap thead th a:link:hover, table.nowrap thead td a:link:hover, table.nowrap thead th a:visited:hover, table.nowrap thead td a:visited:hover {
 	color: white;
 }
 table.nowrap input[type=image][name^=add] {
@@ -115,6 +114,12 @@ table.nowrap input[type=image][name^=drop_col] {
     width: 0;
     background: url("/typo3/sysext/t3skin/images/icons/actions/edit-delete.png") repeat scroll 0 0 transparent;
 }
+input[type=image][name^=add] {
+	height: 16px;
+	padding-left: 16px;
+	width: 0;
+	background: url("/typo3/sysext/t3skin/images/icons/actions/edit-add.png") repeat scroll 0 0 transparent;
+}
 
 p#breadcrumb {
 	border: medium none;
@@ -131,7 +136,6 @@ p#breadcrumb a {
 	width: 270px;
 	padding: 0;
 	background-color: #EBEBEB;
-	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/AMjIyEzIyMizyMjI/zhvCQelaHPPAAAAAElFTkSuQmCC");
 	background-repeat: repeat-y;
 	background-position: right center;
 }
@@ -148,9 +152,13 @@ p#breadcrumb a {
 	border: medium none;
 }
 #menu p select {
-	width: 100%;
+	width: auto;
 }
-
+#menu p#dbs {
+	background-color: #DADADA;
+	height: 16px;
+	padding: 3px 10px;
+}
 #menu h1 {
 	height: 27px;
 	padding: 0 10px;
@@ -158,12 +166,10 @@ p#breadcrumb a {
 	line-height: 23px;
 	display: block;
 	background-color: #585858;
-	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/AEBAQExAQECzQEBA/xb3BD8CHBN0AAAAAElFTkSuQmCC");
-	background-repeat: repeat-y;
-	background-position: right center;
 	color: #FFFFFF;
 	font-size: 10px;
 	border: medium none;
+	background-color: #585858;
 }
 
 #menu h1 a {
@@ -184,7 +190,7 @@ p#breadcrumb a {
 p#tables {
 	margin: 0;
 	position: absolute;
-	top: 97px;
+	top: 80px;
 	bottom: 0;
 	left: 0;
 	padding: 0 0 0 5px;
@@ -206,6 +212,10 @@ p#tables a {
 	margin-top: 1px;
 	top: 0;
     background-color: transparent;
+}
+
+p#tables span {
+	background-color: transparent;
 }
 
 p#tables a[href*="select="] {
@@ -259,6 +269,87 @@ p#tables span.tables-line:hover {
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;
 }
+
+#menu p.links a[href*="sql="] {
+	position: absolute;
+	left: 10px;
+	width: 16px;
+	display: block;
+	overflow: hidden;
+}
+
+#menu p.links a[href*="sql="]:before {
+	content: "\00a0";
+	background-image: url("../Resources/Public/Images/sql.png");
+	background-position: -16px 0;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	line-height: 18px;
+}
+
+#menu p.links a[href*="import="] {
+	position: absolute;
+	left: 28px;
+	width: 16px;
+	display: block;
+	overflow: hidden;
+}
+
+#menu p.links a[href*="import="]:before {
+	content: "\00a0";
+	background-image: url("../Resources/Public/Images/database_go.png");
+	background-position: -16px 0;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	line-height: 18px;
+}
+
+#menu p.links a[href*="dump="] {
+	position: absolute;
+	left: 46px;
+	width: 16px;
+	display: block;
+	overflow: hidden;
+}
+
+#menu p.links a[href*="dump="]:before {
+	content: "\00a0";
+	background-image: url("../Resources/Public/Images/database_save.png");
+	background-position: -16px 0;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	line-height: 18px;
+}
+
+#menu p.links a[href*="create="] {
+	position: absolute;
+	left: 64px;
+	width: 16px;
+	display: block;
+	overflow: hidden;
+}
+
+#menu p.links a[href*="create="]:before {
+	content: "\00a0";
+	background-image: url("/typo3/sysext/t3skin/images/icons/actions/document-new.png");
+	background-position: -16px 0;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	line-height: 18px;
+}
+
 #lang {
 	top: 1px;
 	right: 18px;
@@ -270,6 +361,10 @@ p#tables span.tables-line:hover {
 }
 #lang select {
 	height: 18px;
+}
+
+.icon {
+	border: medium none;
 }
 
 #content {
@@ -284,6 +379,9 @@ p#tables span.tables-line:hover {
 }
 #content table tr:nth-child(2n) td, #content table tr:nth-child(2n) th {
 	background-color: #F7F7F7;
+}
+#content table.checkable tr.checked:nth-child(2n) td, #content table.checkable tr.checked:nth-child(2n) th {
+	background-color: #DADADA;
 }
 #content table tbody tr:hover td, #content table tbody tr:hover th {
 	background-color: #DEDEDE;
@@ -327,40 +425,49 @@ h3 {
 
 input, textarea, select, button {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 11px;
+	font-size: 12px;
 	line-height: 16px;
+	background-color: #FEFEFE;
+}
+input, textarea, button {
+	border: 1px solid #7C7C7C;
+	border-radius: 2px;
+	padding: 3px 6px;
+}
+select {
+	border: 1px inset #7C7C7C;
+}
+input.default {
+	box-shadow: none;
+}
+input:focus, textarea:focus, button:focus {
+	border-color: #32A0FF;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 6px rgba(50, 160, 255, 0.6);
+	outline: 0 none;
 }
 input[type="submit"], input[type="button"], input[type="reset"] {
-	border: 1px solid #ACB3BE;
-	color: #333333;
+	border: 1px solid #7C7C7C;
+	color: #434343;
 	cursor: pointer;
+	text-decoration: none !important;
+	white-space: nowrap;
 	height: 19px;
 	margin-left: 5px;
 	padding: 0 4px 2px;
-	background-color: #F6F6F6;
-	background-image: url('/typo3/sysext/t3skin/images/backgrounds/button.png');
-	background-image: linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-    background-image: -o-linear-gradient(top, #f6f6f6 10%, #d5d5d5 90%);
-    background-image: -ms-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-    background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #d5d5d5));
-    background-position: center bottom;
-	background-repeat: repeat-x;
-	border-radius: 1px;
-	-moz-border-radius: 1px;
+	background-color: #E0E0E0;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+input[type="image"] {
+	padding: 0;
+}
+input[type="file"] {
+	border: medium none;
 }
 input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover {
-	background-color: #c8c8c8;
-	background-image: url('/typo3/sysext/t3skin/images/backgrounds/button-hover.png');
-	background-image: linear-gradient(center top, #f6f6f6 10%, #c8c8c8 90%);
-    background-image: -o-linear-gradient(top, #f6f6f6 10%, #c8c8c8 100%);
-    background-image: -ms-linear-gradient(center top, #f6f6f6 10%, #bdbcbc 90%);
-    background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #bdbcbc 90%);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #c8c8c8));
-	background-position: bottom;
-	background-repeat: repeat-x;
-	border: 1px solid #737f91;
-	color: #1e1e1e;
+	background-color: #CCCCCC;
+	text-decoration: none !important;
+	color: #000000;
 	cursor: pointer;
 }
 #menu input[type="submit"], #menu input[type="button"], #menu input[type="reset"] {
@@ -394,11 +501,12 @@ input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hove
 	top: 2em;
 	left: 59em;
 }
-p.tabs {
+#content h2+p.links, p.tabs {
 	border-bottom: 1px solid #ADADAD;
-	padding: 3px 0 3px 10px;
+	padding: 3px 0 4px 10px;
 }
-p.tabs a {
+
+#content h2+p.links a, p.tabs a {
 	-moz-border-bottom-colors: none;
 	-moz-border-image: none;
 	-moz-border-left-colors: none;
@@ -415,13 +523,15 @@ p.tabs a {
 	margin: 0 -1px 0 -2px;
 	border-bottom: 1px solid #C0C0C0;
 }
-p.tabs a:hover {
+
+#content h2+p.links a:hover, p.tabs a:hover {
 	background-color: #EEEEEE;
 	border-color: #ADADAD;
 	color: #606060;
 	text-decoration: none;
 }
-p.tabs a.active {
+
+#content h2+p.links a.active, p.tabs a.active {
 	background: none repeat scroll 0 0 #FFFFFF;
 	color: #000000;
 	border-bottom: 1px solid #FFFFFF;
@@ -494,13 +604,22 @@ p.pages {
 	background: none repeat scroll 0 0 transparent;
 	border: medium none;
 	height: 12px;
-	left: 50%;
+	left: auto;
 	margin: 0;
 	padding: 5px;
 	position: fixed;
 	top: 25px;
+	right: 16px;
 }
 p.pages a {
-	border: 1px solid #ADADAD;
-	padding: 1px 5px;
+	border: 1px solid #7C7C7C;
+	padding: 1px 11px;
+	background-color: #E0E0E0;
+	border-radius: 2px;
+	color: #434343;
+}
+p.pages a:hover {
+	background-color: #C0C0C0;
+	color: #000000;
+	text-decoration: none;
 }

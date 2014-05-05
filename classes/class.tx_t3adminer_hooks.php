@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2011-2012 Jigal van Hemert <jigal@xs4all.nl>
+ *  (c) 2011-2014 Jigal van Hemert <jigal.van.hemert@typo3.org>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -21,11 +21,6 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
-/**
- * [CLASS/FUNCTION INDEX of SCRIPT]
- *
-*/
 
 class tx_t3adminer_hooks {
 
