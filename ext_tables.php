@@ -1,10 +1,7 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
-}
+defined('TYPO3_MODE') or die();
 
 if (TYPO3_MODE == 'BE') {
-	t3lib_extMgm::addModulePath('tools_txt3adminerM1', t3lib_extMgm::extPath($_EXTKEY) . 'mod1/');
-	t3lib_extMgm::addModule('tools', 'txt3adminerM1', '', t3lib_extMgm::extPath($_EXTKEY) . 'mod1/');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModulePath('tools_txt3adminerM1', \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'mod1/');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModule('tools', 'txt3adminerM1', '', \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'mod1/');
 }
-?>

@@ -1,3 +1,46 @@
+2015-12-03 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+	* Upgrade to Adminer 4.2.3
+	* Added language keys for Bulgarian, Galician en Greek
+	* Changed images to SVG, dropping FontAwesome completely
+	* Module icon is SVG now
+	* Compatibility for 7LTS only (7.6.0 and higher)
+	* Version 7.0.4
+
+2015-10-03 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+	* Upgrade to Adminer 4.2.2
+	* Minor styling issues
+	* Version 7.0.3
+
+2015-10-01 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+	* Security fix! Version 7.0.2
+
+2015-04-12 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+	* Upgrade to Adminer 4.2.1
+	* Added Danish language key
+	* Fixed #65522 Missing icons (path to FontAwesome)
+
+2015-03-02 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+    * Upgrade to Adminer 4.2.0
+    * New module icon for TYPO3 CMS 7
+    * Compatible with TYPO3 CMS 7
+    * This branch will not be compatible with lower versions!            
+
+2014-05-07 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+    * Upgrade to Adminer 4.1.0
+    * Added plugin to disable version check in JS
+    * Added plugin to disable redirect to hide referrer
+    * Added and modified plugin to add option to store exports on server
+    * Styling added for two new options
+    * Styling fixes for IE
+    * Styling fixes for flash messages, selected table headers
+    * Added new language keys
+
 2014-03-26 Jigal van Hemert <jigal.van.hemert@typo3.org>
 
     * Upgrade to Adminer 4.0.3

@@ -22,7 +22,7 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class tx_t3adminer_hooks {
+class T3AdminerHooks {
 
 	/**
 	 * Hook to remove t3adminer session on logoff
@@ -47,8 +47,3 @@ class tx_t3adminer_hooks {
 		);
 	}
 }
-
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3adminer/classes/class.tx_t3adminer_hooks.php'])	{
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3adminer/classes/class.tx_t3adminer_hooks.php']);
-}
-?>
