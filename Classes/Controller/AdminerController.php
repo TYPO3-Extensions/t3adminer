@@ -29,7 +29,8 @@ class AdminerController extends \TYPO3\CMS\Backend\Module\BaseScriptClass
     {
         $GLOBALS['LANG']->includeLLFile('EXT:t3adminer/mod1/locallang.xml');
         // This checks permissions and exits if the users has no permission for entry.
-        $GLOBALS['BE_USER']->modAccess($GLOBALS['MCONF'], 1);
+        $this->MCONF = $GLOBALS['TBE_MODULES']['_configuration']['tools_txt3adminerM1'];
+        $this->getBackendUser()->modAccess($this->MCONF, 1);
         parent::init();
     }
 
@@ -57,7 +58,7 @@ class AdminerController extends \TYPO3\CMS\Backend\Module\BaseScriptClass
             $extPath = ExtensionManagementUtility::extPath('t3adminer');
             $typo3DocumentRoot = GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT');
             // Set class config for module
-            $this->MCONF = $GLOBALS['MCONF'];
+            $this->MCONF = $GLOBALS['TBE_MODULES']['_configuration']['tools_txt3adminerM1'];
             // Get config
             $extensionConfiguration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['t3adminer']);
 
