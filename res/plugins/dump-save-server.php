@@ -19,11 +19,21 @@ class AdminerDumpSaveServer
     var $dir;
     var $fileName;
 
-    function AdminerDumpSaveServer($dir = null)
+    /**
+     * AdminerDumpSaveServer constructor.
+     *
+     * @param null $dir
+     */
+    function __construct($dir = null)
     {
         $this->dir = $dir;
     }
 
+    /**
+     * Option for this dump type
+     *
+     * @return array
+     */
     function dumpOutput()
     {
         return array('server' => 'Server');

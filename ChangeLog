@@ -1,3 +1,11 @@
+2016-03-12 Jigal van Hemert <jigal.van.hemert@typo3.org>
+
+	* Upgrade to Adminer 4.2.4
+	* Updated plugin.php for compatibility with PHP 7.0
+	* Version 7.0.7
+	* Updated plugins for compatibility with PHP 7.0
+	* Added language keys for Bosnian and Finnish
+
 2015-12-10 Jigal van Hemert <jigal.van.hemert@typo3.org>
 
 	* Renamed classes to Classes for classloader compatibility

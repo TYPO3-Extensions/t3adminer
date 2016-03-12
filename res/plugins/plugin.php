@@ -2,12 +2,14 @@
 
 /** Adminer customization allowing usage of plugins
  *
+ * @link https://www.adminer.org/plugins/#use
  * @author Jakub Vrana, http://www.vrana.cz/
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 (one or other)
  */
 class AdminerPlugin extends Adminer
 {
+    /** @access protected */
     var $plugins;
 
     function _findRootClass($class)
@@ -24,38 +26,25 @@ class AdminerPlugin extends Adminer
      *
      * @param array object instances or null to register all classes starting by 'Adminer'
      */
-    function AdminerPlugin($plugins)
+    function __construct($plugins)
     {
-        if (!isset($plugins)) {
+        if ($plugins === null) {
             $plugins = array();
             foreach (get_declared_classes() as $class) {
                 if (preg_match('~^Adminer.~i', $class) &&
                     strcasecmp($this->_findRootClass($class), 'Adminer')
-                ) { // can use interface since PHP 5
+                ) { //! can use interface
                     $plugins[$class] = new $class;
                 }
             }
         }
         $this->plugins = $plugins;
-        // it is possible to use ReflectionObject in PHP 5 to find out which plugins defines which methods at once
+        //! it is possible to use ReflectionObject to find out which plugins defines which methods at once
     }
 
     function _callParent($function, $args)
     {
-        switch (count($args)) { // call_user_func_array(array('parent', $function), $args) works since PHP 5
-            case 0:
-                return parent::$function();
-            case 1:
-                return parent::$function($args[0]);
-            case 2:
-                return parent::$function($args[0], $args[1]);
-            case 3:
-                return parent::$function($args[0], $args[1], $args[2]);
-            case 4:
-                return parent::$function($args[0], $args[1], $args[2], $args[3]);
-            default:
-                trigger_error('Too many parameters.', E_USER_WARNING);
-        }
+        return call_user_func_array(array('parent', $function), $args);
     }
 
     function _applyPlugin($function, $args)
@@ -78,10 +67,16 @@ class AdminerPlugin extends Adminer
                     case 4:
                         $return = $plugin->$function($args[0], $args[1], $args[2], $args[3]);
                         break;
+                    case 5:
+                        $return = $plugin->$function($args[0], $args[1], $args[2], $args[3], $args[4]);
+                        break;
+                    case 6:
+                        $return = $plugin->$function($args[0], $args[1], $args[2], $args[3], $args[4], $args[5]);
+                        break;
                     default:
                         trigger_error('Too many parameters.', E_USER_WARNING);
                 }
-                if (isset($return)) {
+                if ($return !== null) {
                     return $return;
                 }
             }
@@ -95,10 +90,7 @@ class AdminerPlugin extends Adminer
         $return = $this->_callParent($function, $args);
         foreach ($this->plugins as $plugin) {
             if (method_exists($plugin, $function)) {
-                $return += call_user_func_array(array(
-                    $plugin,
-                    $function
-                ), $args);
+                $return += call_user_func_array(array($plugin, $function), $args);
             }
         }
 
@@ -121,7 +113,7 @@ class AdminerPlugin extends Adminer
         return $this->_appendPlugin(__FUNCTION__, $args);
     }
 
-    function editFunctions()
+    function editFunctions($field)
     {
         $args = func_get_args();
 
@@ -144,7 +136,7 @@ class AdminerPlugin extends Adminer
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function permanentLogin()
+    function permanentLogin($create = false)
     {
         $args = func_get_args();
 
@@ -152,6 +144,27 @@ class AdminerPlugin extends Adminer
     }
 
     function database()
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function schemas()
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function databases($flush = true)
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function queryTimeout()
     {
         $args = func_get_args();
 
@@ -179,126 +192,133 @@ class AdminerPlugin extends Adminer
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function login()
+    function login($login, $password)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function tableName()
+    function tableName($tableStatus)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function fieldName()
+    function fieldName($field, $order = 0)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectLinks()
+    function selectLinks($tableStatus, $set = "")
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function foreignKeys()
+    function foreignKeys($table)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function backwardKeys()
+    function backwardKeys($table, $tableName)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function backwardKeysPrint()
+    function backwardKeysPrint($backwardKeys, $row)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectQuery()
+    function selectQuery($query, $time)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function rowDescription()
+    function rowDescription($table)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function rowDescriptions()
+    function rowDescriptions($rows, $foreignKeys)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectVal()
+    function selectLink($val, $field)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function editVal()
+    function selectVal($val, $link, $field, $original)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectColumnsPrint()
+    function editVal($val, $field)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectSearchPrint()
+    function selectColumnsPrint($select, $columns)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectOrderPrint()
+    function selectSearchPrint($where, $columns, $indexes)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectLimitPrint()
+    function selectOrderPrint($order, $columns, $indexes)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectLengthPrint()
+    function selectLimitPrint($limit)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectActionPrint()
+    function selectLengthPrint($text_length)
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function selectActionPrint($indexes)
     {
         $args = func_get_args();
 
@@ -319,28 +339,28 @@ class AdminerPlugin extends Adminer
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectEmailPrint()
+    function selectEmailPrint($emailFields, $columns)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectColumnsProcess()
+    function selectColumnsProcess($columns, $indexes)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectSearchProcess()
+    function selectSearchProcess($fields, $indexes)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectOrderProcess()
+    function selectOrderProcess($fields, $indexes)
     {
         $args = func_get_args();
 
@@ -361,49 +381,70 @@ class AdminerPlugin extends Adminer
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function selectEmailProcess()
+    function selectEmailProcess($where, $foreignKeys)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function messageQuery()
+    function selectQueryBuild($select, $where, $group, $order, $limit, $page)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function editInput()
+    function messageQuery($query, $time)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function processInput()
+    function editInput($table, $field, $attrs, $value)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function dumpTable()
+    function processInput($field, $value, $function = "")
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function dumpData()
+    function dumpDatabase($db)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function dumpHeaders()
+    function dumpTable($table, $style, $is_view = 0)
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function dumpData($table, $style, $query)
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function dumpFilename($identifier)
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function dumpHeaders($identifier, $multi_table = false)
     {
         $args = func_get_args();
 
@@ -417,14 +458,21 @@ class AdminerPlugin extends Adminer
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function navigation()
+    function navigation($missing)
     {
         $args = func_get_args();
 
         return $this->_applyPlugin(__FUNCTION__, $args);
     }
 
-    function tablesPrint()
+    function databasesPrint($missing)
+    {
+        $args = func_get_args();
+
+        return $this->_applyPlugin(__FUNCTION__, $args);
+    }
+
+    function tablesPrint($tables)
     {
         $args = func_get_args();
 

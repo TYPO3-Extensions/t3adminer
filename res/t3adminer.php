@@ -57,9 +57,10 @@ function adminer_object()
         /**
          * Key used for permanent login
          *
+         * @param boolean $create
          * @return string
          */
-        function permanentLogin()
+        function permanentLogin($create = false)
         {
             return "74b941992ef29727ccabf82889fe837a";
         }
